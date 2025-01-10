@@ -9,7 +9,7 @@ app.use(express.static('public'));
 
 // # REGISTERING ROUTES
 const booksRouter = require("./routers/booksRouter");
-app.use("/books", booksRouter);
+app.use("/api/books", booksRouter);
 
 // # ERROR HANDLERS
 const notFound = require("./middlewares/notFound");
