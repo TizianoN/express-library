@@ -1,11 +1,19 @@
 // # INIT EXPRESS
 const express = require("express");
 const app = express();
-const { APP_HOST, APP_PORT } = process.env;
+const cors = require('cors')
+const { APP_HOST, APP_PORT, APP_FRONTEND_URL } = process.env;
+
+// # CORS CONFIG
+var corsOptions = {
+  origin: APP_FRONTEND_URL,
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
 
 // # REGISTERING MIDDLEWARES
 app.use(express.json());
 app.use(express.static('public'));
+app.use(cors(corsOptions));
 
 // # REGISTERING ROUTES
 const booksRouter = require("./routers/booksRouter");
